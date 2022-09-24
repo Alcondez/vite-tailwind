@@ -1,45 +1,45 @@
+import { Category } from "../api/categories";
 import "../App.css";
 import chevron from "../assets/chevron.png";
+import Spinner from "./Spinner";
 
 interface CategoryListProps {
-  activeSection?: string;
-  selectActiveSection: (section: string | undefined) => void;
+  sectionName?: string;
+  categories?: Category[];
+  showCategory: (category: Category) => void;
+  dataLoading: boolean;
 }
 
 const CategoryList = ({
-  activeSection,
-  selectActiveSection,
+  sectionName,
+  categories,
+  showCategory,
+  dataLoading = true,
 }: CategoryListProps) => {
   return (
-    <div
-      className={`h-full bg-gray-100 p-8 flex flex-col relative transition-all duration-300 ${
-        activeSection ? "" : "-ml-[600px]"
-      }`}
-    >
-      <span className="text-2xl font-semibold mb-3">{activeSection}</span>
-      <div className="w-96 mb-3 bg-white flex flex-row rounded-lg p-3 justify-between items-center">
-        <span className="text-lg">Puertas</span>
-        <img
-          className="max-h-4 rotate-180"
-          src={chevron}
-          alt="dropdown-button"
-        />
-      </div>
-      <div className="w-96 mb-3 bg-white flex flex-row rounded-lg p-3 justify-between items-center">
-        <span className="text-lg">Ventanas</span>
-        <img
-          className="max-h-4 rotate-180"
-          src={chevron}
-          alt="dropdown-button"
-        />
-      </div>
-      <div
-        className="absolute -right-8 border bg-gray-100 h-20 w-8 flex justify-center items-center bottom-1/2"
-        onClick={() => selectActiveSection(undefined)}
-      >
-        <img className="max-h-6" src={chevron} alt="dropdown-button" />
-      </div>
-    </div>
+    <>
+      <span className="text-2xl font-semibold mb-3">{sectionName}</span>
+      {dataLoading ? (
+        <Spinner />
+      ) : (
+        <div>
+          {categories &&
+            categories.map((category) => (
+              <div
+                className="w-full mb-3 bg-white flex flex-row rounded-lg p-3 justify-between items-center cursor-pointer"
+                onClick={() => showCategory(category)}
+              >
+                <span className="text-lg">{category.name}</span>
+                <img
+                  className="max-h-4 rotate-180"
+                  src={chevron}
+                  alt="dropdown-button"
+                />
+              </div>
+            ))}
+        </div>
+      )}
+    </>
   );
 };
 
