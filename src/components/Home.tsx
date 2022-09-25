@@ -40,7 +40,7 @@ function Home() {
           categories={data?.data}
           dataLoading={isLoading || isFetching}
         />
-        <SideButtons />
+        <SideButtons activeSection={activeSection} />
       </div>
     </div>
   );
