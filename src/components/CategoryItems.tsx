@@ -1,7 +1,6 @@
 import { Category } from "../api/categories";
 import "../App.css";
 import chevron from "../assets/chevron.png";
-import Spinner from "./Spinner";
 
 interface CategoryListProps {
   activeSection?: string;
@@ -28,7 +27,7 @@ const CategoryItems = ({
       <div className="grid grid-cols-3 gap-4">
         {category?.items &&
           category.items.map((item) => (
-            <div className="flex flex-col">
+            <div key={item.name} className="flex flex-col">
               <img className="w-full h-32" src={item.img} alt={item.name} />
               <span className="text-lg text-center">{item.name}</span>
             </div>

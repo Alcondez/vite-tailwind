@@ -26,6 +26,7 @@ const CategoryList = ({
           {categories &&
             categories.map((category) => (
               <div
+                key={category.name}
                 className="w-full mb-3 bg-white flex flex-row rounded-lg p-3 justify-between items-center cursor-pointer"
                 onClick={() => showCategory(category)}
               >
