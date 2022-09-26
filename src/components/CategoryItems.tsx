@@ -1,6 +1,7 @@
 import { Category } from "../api/categories";
 import "../App.css";
 import chevron from "../assets/chevron.png";
+import placeholder from "../assets/no-image-placeholder.png";
 
 interface CategoryListProps {
   activeSection?: string;
@@ -28,7 +29,15 @@ const CategoryItems = ({
         {category?.items &&
           category.items.map((item) => (
             <div key={item.name} className="flex flex-col">
-              <img className="w-full h-32" src={item.img} alt={item.name} />
+              <img
+                className="w-full h-32"
+                src={item.img}
+                alt={item.name}
+                onError={({ currentTarget }) => {
+                  currentTarget.onerror = null; // prevents looping
+                  currentTarget.src = placeholder;
+                }}
+              />
               <span className="text-lg text-center">{item.name}</span>
             </div>
           ))}
