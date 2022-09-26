@@ -34,6 +34,11 @@ const Sectioncontainer = ({
   const showSection = () => {
     setScreen(Screen.CATEGORY_LIST);
   };
+  const hideSectionContainer = () => {
+    selectActiveSection(undefined);
+    setActiveCategory(undefined);
+    setScreen(Screen.CATEGORY_LIST);
+  };
   return (
     <div
       className={`h-full w-[600px] bg-gray-100 p-8 flex flex-col relative transition-all duration-300 ${
@@ -56,7 +61,7 @@ const Sectioncontainer = ({
       )}
       <div
         className="absolute -right-8 border bg-gray-100 h-20 w-8 flex justify-center items-center bottom-1/2"
-        onClick={() => selectActiveSection(undefined)}
+        onClick={() => hideSectionContainer()}
       >
         <img
           className="max-h-6 cursor-pointer"
