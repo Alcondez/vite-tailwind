@@ -6,16 +6,19 @@ const MenuDropdown = () => {
   const [open, setOpen] = useState(false);
   return (
     <div className="h-12 bg-white flex items-center rounded-lg relative">
-      <span className="py-2 px-3 border-r-2">Guardar y salir</span>
-      <img
-        className="p-2 -rotate-90 w-8 f-8 cursor-pointer"
-        src={chevron}
-        alt="dropdown-button"
-        onClick={() => setOpen(!open)}
-      />
+      <span className={`py-3 px-3 ${open ? "" : "border-r-2"} cursor-pointer`}>
+        Guardar y salir
+      </span>
+      <button className="px-2 cursor-pointer" onClick={() => setOpen(!open)}>
+        <img
+          className=" p-1 -rotate-90 w-8 f-8 "
+          src={chevron}
+          alt="dropdown-button"
+        />
+      </button>
 
       <div
-        className={`absolute flex flex-col bg-white z-20 top-10 divide-y ${
+        className={`absolute flex flex-col bg-white z-20 top-10 w-full divide-y ${
           open ? "" : "hidden"
         }`}
       >

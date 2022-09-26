@@ -4,6 +4,7 @@ import "../App.css";
 import chevron from "../assets/chevron.png";
 import CategoryItems from "./CategoryItems";
 import CategoryList from "./CategoryList";
+import { Sections } from "./Home";
 
 export enum Screen {
   CATEGORY_LIST = "CATEGORY_LIST",
@@ -12,7 +13,7 @@ export enum Screen {
 
 interface CategoryListProps {
   activeSection?: string;
-  selectActiveSection: (section: string | undefined) => void;
+  selectActiveSection: (section: Sections | undefined) => void;
   categories?: Category[];
   dataLoading: boolean;
 }

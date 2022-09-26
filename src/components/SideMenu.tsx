@@ -2,32 +2,40 @@ import "../App.css";
 import aberturas from "../assets/aberturas.png";
 import equipamiento from "../assets/equipamiento.png";
 import terminaciones from "../assets/terminaciones.png";
+import { Sections } from "./Home";
 
 interface SideMenuProps {
-  selectActiveSection: (section: string | undefined) => void;
+  activeSection?: Sections;
+  selectActiveSection: (section: Sections | undefined) => void;
 }
 
-const SideMenu = ({ selectActiveSection }: SideMenuProps) => {
+const SideMenu = ({ activeSection, selectActiveSection }: SideMenuProps) => {
   return (
-    <div className="h-full bg-white min-w-min px-2 flex items-center z-10">
+    <div className="h-full bg-white min-w-min flex items-center z-10">
       <div className="flex flex-col">
         <div
-          className="p-2 cursor-pointer"
-          onClick={() => selectActiveSection("aberturas")}
+          className={`p-3 cursor-pointer ${
+            activeSection === Sections.Openings ? "bg-gray-100" : ""
+          }`}
+          onClick={() => selectActiveSection(Sections.Openings)}
         >
-          <img src={aberturas} alt="aberturas" />
+          <img src={aberturas} alt={Sections.Openings} />
         </div>
         <div
-          className="p-2 cursor-pointer"
-          onClick={() => selectActiveSection("equipamiento")}
+          className={`p-3 cursor-pointer ${
+            activeSection === Sections.Equipment ? "bg-gray-100" : ""
+          }`}
+          onClick={() => selectActiveSection(Sections.Equipment)}
         >
-          <img src={equipamiento} alt="equipamiento" />
+          <img src={equipamiento} alt={Sections.Equipment} />
         </div>
         <div
-          className="p-2 cursor-pointer"
-          onClick={() => selectActiveSection("terminaciones")}
+          className={`p-3 cursor-pointer ${
+            activeSection === Sections.Finishes ? "bg-gray-100" : ""
+          }`}
+          onClick={() => selectActiveSection(Sections.Finishes)}
         >
-          <img src={terminaciones} alt="terminaciones" />
+          <img src={terminaciones} alt={Sections.Finishes} />
         </div>
       </div>
     </div>

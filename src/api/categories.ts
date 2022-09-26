@@ -13,5 +13,5 @@ export interface Category {
 const BASE_URL = "https://us-central1-prueba-front-280718.cloudfunctions.net";
 
 export const fetchCategoriesBySection = (category?: string) => {
-  return axios.get<Category[]>(`${BASE_URL}/${category}`);
+  return axios.get<Category[]>(`${BASE_URL}/${category?.toLowerCase()}`);
 };

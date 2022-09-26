@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import "../App.css";
-import CategoryList from "./CategoryList";
 import Header from "./Header";
 import SideMenu from "./SideMenu";
 import { fetchCategoriesBySection } from "../api/categories";
@@ -25,7 +24,7 @@ function Home() {
     }
   );
 
-  const selectActiveSection = (section: string | undefined) => {
+  const selectActiveSection = (section: Sections | undefined) => {
     setActiveSection(section as Sections);
   };
 
@@ -33,7 +32,10 @@ function Home() {
     <div className="w-screen h-screen flex flex-col">
       <Header />
       <div className="grow flex flex-row bg-gray-200 relative">
-        <SideMenu selectActiveSection={selectActiveSection} />
+        <SideMenu
+          activeSection={activeSection}
+          selectActiveSection={selectActiveSection}
+        />
         <Sectioncontainer
           activeSection={activeSection}
           selectActiveSection={selectActiveSection}

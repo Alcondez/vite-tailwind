@@ -27,7 +27,7 @@ const SideButtons = ({ activeSection }: SideButtonsProps) => {
       )}
       <div className="flex flex-row justify-end mt-auto">
         <div className="flex flex-col justify-between bg-white divide-y mr-6 rounded-md">
-          <div className="flex grow items-center">
+          <div className="flex grow items-center px-1">
             <img
               className="w-8 f-8 cursor-pointer"
               src={plus}
@@ -35,7 +35,7 @@ const SideButtons = ({ activeSection }: SideButtonsProps) => {
               onClick={() => console.log("Plus clicked")}
             />
           </div>
-          <div className="flex grow items-center">
+          <div className="flex grow items-center px-1">
             <img
               className="w-8 f-8 cursor-pointer"
               src={minus}
@@ -44,8 +44,8 @@ const SideButtons = ({ activeSection }: SideButtonsProps) => {
             />
           </div>
         </div>
-        <div className="flex flex-col w-28 bg-white rounded-md">
-          <div className="flex justify-center">
+        <div className="flex flex-col w-26 p-1 bg-white rounded-md">
+          <div className="flex justify-center -mb-1">
             <img
               className="w-8 f-8 cursor-pointer"
               src={arrow}
@@ -53,9 +53,9 @@ const SideButtons = ({ activeSection }: SideButtonsProps) => {
               onClick={() => console.log("Arror up clicked")}
             />
           </div>
-          <div className="flex flex-row justify-between">
+          <div className="flex flex-row justify-center">
             <img
-              className="w-8 f-8 -rotate-90 cursor-pointer"
+              className="w-8 f-8 mr-4 -rotate-90 cursor-pointer"
               src={arrow}
               alt=""
               onClick={() => console.log("Arrow left clicked")}
@@ -67,7 +67,7 @@ const SideButtons = ({ activeSection }: SideButtonsProps) => {
               onClick={() => console.log("Arrow right clicked")}
             />
           </div>
-          <div className="flex justify-center">
+          <div className="flex justify-center -mt-1">
             <img
               className="w-8 f-8 rotate-180 cursor-pointer"
               src={arrow}
